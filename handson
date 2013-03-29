@@ -1,0 +1,10 @@
+#!/bin/sh
+
+dir=$(dirname $0)
+cd "$dir"
+
+sbt="$dir/sbt/sbt-launch.jar"
+
+# tweak this line according to your needs
+java $SBT_PROPS -Dsbt.ivy.home="$dir/sbt/repository" -Dsbt.boot.directory="$dir/sbt/boot" -Dsbt.boot.properties="$dir/sbt/sbt.boot.properties" -Xmx512M -jar -Dfile.encoding=UTF8 -Xss1M -XX:+CMSClassUnloadingEnabled -XX:MaxPermSize=256m "$dir/$sbt" "$@"
+

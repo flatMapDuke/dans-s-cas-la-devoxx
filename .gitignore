@@ -1,0 +1,12 @@
+.DS_Store
+.idea*
+project
+target
+.classpath
+.project
+.settings
+lib_managed
+ivyrepo
+sbtboot
+sbt/repository
+sbt/sbt

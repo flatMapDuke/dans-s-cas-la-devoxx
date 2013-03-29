@@ -1,6 +1,6 @@
 package pas_suivant
 
-import premiers_pas.HandsOnSuiteP1
+import support.HandsOnSuite
 
 /**
 *   Les fonctions de plus haut niveau.
@@ -19,7 +19,7 @@ import premiers_pas.HandsOnSuiteP1
 *     - pas besoin de return en Scala puisque la dernière expression est retournée par défaut !
 *
 */
-class e8_fonctions_de_plus_haut_niveau extends HandsOnSuiteP1 {
+class e8_fonctions_de_plus_haut_niveau extends HandsOnSuite {
 
   /**
   *   Une variable peut faire référence à une fonction dite anonyme.

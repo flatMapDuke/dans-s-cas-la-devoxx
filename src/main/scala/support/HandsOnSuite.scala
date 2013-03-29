@@ -35,21 +35,18 @@ trait HandsOnSuite extends MyFunSuite with ShouldMatchers {
   private class ReportToTheStopper(other: Reporter) extends Reporter {
     var failed = false
 
-    //def headerFail = "/!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\\n                 TEST FAILED                 \n/!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\"
-    //def footerFail = "/!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\ /!\\"
     def headerFail =    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n               TEST FAILED                 \n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     def footerFail =    "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!"
     def headerPending = "*******************************************\n               TEST PENDING                \n*******************************************"
     def footerPending = "*******************************************"
 
-    def sendInfo(header: String, suite: Option[String], test: Option[String], location: Option[String], message: Option[String], context: Option[String], footer: String) {
+    def sendInfo(header: String, suite: String, test: String, location: Option[String], message: Option[String], context: Option[String], footer: String) {
       header.split("\n").foreach(info(_))
-      suite.collect({ case s =>
-        info( "Suite    : " + s.replace("\n","") )
-      })
-      test.collect({ case t =>
-        info( "Test     : " + t.replace("\n","") )
-      })
+
+      info( "Suite    : " + suite.replace("\n","") )
+
+      info( "Test     : " + test.replace("\n","") )
+
       location.collect({ case f =>
         info( "fichier  : " + f.replace("\n","") )
       })
@@ -67,36 +64,70 @@ trait HandsOnSuite extends MyFunSuite with ShouldMatchers {
 
     }
 
+    def sendFail(e:MyException, suite:String, test:String) = {
+      sendInfo(headerFail
+          , suite
+          , test
+          , e.fileNameAndLineNumber
+          , Option(e.getMessage)
+          , e.context
+          , footerFail
+        )
+    }
+
+    def sendPending(e:MyException, suite:String, test:String, mess:Option[String]) = {
+      sendInfo(headerPending
+          , suite
+          , test
+          , e.fileNameAndLineNumber
+          , mess
+          , e.context
+          , footerPending
+        )
+    }
+
     def apply(event: Event) {
       event match {
         case e: TestFailed => {
           e.throwable match {
-	    //pour les erreurs d'assertions => sans stacktrace
+      //pour les erreurs d'assertions => sans stacktrace
             case Some(failure: MyTestFailedException) =>
-              val message = Option(failure.getMessage)
-              sendInfo(headerFail, Some(e.suiteName), Some(e.testName), failure.fileNameAndLineNumber, message, failure.context, footerFail)
-	    //pour les __ => avec context
+              sendFail(failure, e.suiteName, e.testName)
+      //pour les __ => avec context
             case Some(pending: MyTestPendingException) =>
-              sendInfo(headerPending, Some(e.suiteName), Some(e.testName), pending.fileNameAndLineNumber, Some("Vous devez remplacer les __ par les valeurs correctes"), pending.context, footerPending)
-	    //pour les ??? => sans context
+              sendPending(pending, e.suiteName, e.testName, Some("Vous devez remplacer les __ par les valeurs correctes"))
+      //pour les ??? => sans context
             case Some(pending: MyNotImplException) =>
-              sendInfo(headerPending, Some(e.suiteName), Some(e.testName), pending.fileNameAndLineNumber, Some("Vous devez remplacer les ??? par les implémentations correctes"), pending.context, footerPending)
-	    //pour les autres erreurs => avec stacktrace
+              sendPending(pending, e.suiteName, e.testName, Some("Vous devez remplacer les ??? par les implémentations correctes"))
+      //pour les autres erreurs => avec stacktrace
             case Some(failure: MyException) =>
-              val context:String =  failure.getStackTrace.take(5).mkString("\n")
-              sendInfo(headerFail, Some(e.suiteName), Some(e.testName), failure.fileNameAndLineNumber, Option(failure.getMessage), failure.context, footerFail)
-	    //ça ne devrait pas arriver
+              sendFail(failure, e.suiteName, e.testName)
+      //ça ne devrait pas arriver
             case Some(e) =>
-	      println("something went wrong")
-	    //ça non plus, un TestFailed a normalement une excepetion attachée
+              println("something went wrong")
+      //ça non plus, un TestFailed a normalement une excepetion attachée
             case None =>
-              sendInfo(headerFail, Some(e.suiteName), Some(e.testName), None, None, None, footerFail)
+              sendInfo(headerFail
+                , e.suiteName
+                , e.testName
+                , None
+                , None
+                , None
+                ,
+                footerFail
+              )
           }
         }
-        case e: TestPending => sendInfo(headerPending, Some(e.suiteName), Some(e.testName), None, Some("pending"), None, footerPending)
+        case e: TestPending =>
+          sendInfo(headerPending
+            , e.suiteName
+            , e.testName
+            , None
+            , Some("pending")
+            , None
+            , footerPending)
         case _ => other(event)
       }
-
     }
   }
 
@@ -105,11 +136,7 @@ trait HandsOnSuite extends MyFunSuite with ShouldMatchers {
       super.runTest(testName, new ReportToTheStopper(reporter), CustomStopper, configMap, tracker)
     }
   }
-
-
 }
-
-
 
 object HandsOnSuite {
   object partie1 extends Tag("support.partie1")

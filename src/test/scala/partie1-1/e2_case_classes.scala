@@ -21,7 +21,7 @@ import support.HandsOnSuite
 *  Enfin, en plus de rendre le code plus concis, l'un des intérêts des cases classes est son
 *  utilisation lors du Pattern Matching (notion que l'on verra plus tard).
 */
-class e2_case_classes extends HandsOnSuiteP1{
+class e2_case_classes extends HandsOnSuite {
   /**
   * Création d'une instance d'une case class
   */

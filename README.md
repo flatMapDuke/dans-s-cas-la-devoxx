@@ -2,16 +2,16 @@ Dans s'cas là.
 ==============
 Auteurs
 -----------
-Ludwine Probst @nivdul
-Mathieu Chataigner @mchataigner
-Jonathan Winandy @ahoy_jon
-Jean Helou @jeanhelou
+* Ludwine Probst [@nivdul](https://twitter.com/nivdul)
+* Mathieu Chataigner [@mchataigner](https://twitter.com/mchataigner)
+* Jonathan Winandy [@ahoy_jon](https://twitter.com/ahoy_jon)
+* Jean Helou [@jeanhelou](https://twitter.com/jeanhelou)
 
 Pré-requis
 ------------
 Vous avez besoin :
 * D'une connexion internet 
-* De java 6+ (vous pouvez le vérifier en lançant java -version)
+* De java 6 ou de java 7 (vous pouvez le vérifier en lançant java -version)
 * Un éditeur de texte (nous recommandons sublime-text)
 
 Lancer le Hands-on
@@ -32,7 +32,7 @@ Il y a d'autres commandes qui permettent de lancer chaque chapitre indépendamen
 * ```partie1-2``` - api des listes, maps, sets, option, fonctions de plus haut niveau, extracteurs et pattern matching
 * ```partie2``` - comprendre le fonctionnement de map et de flatMap dans différents contextes, initiation simple à la variance
 * ```partie3``` - construire une implementation de List immutable, construire un stream (liste infinie évaluée à la demande)
-* ```partie4``` - (bonus) Introduction aux Type Clas
+* ```partie4``` - (bonus) Introduction aux TypeClasses
 * ```partie5``` - (bonus) Revisiter map et flatmap dans un cas plus complexe
 * ```partie6``` - (bonus) Un exemple d'event sourcing
 

@@ -1,12 +1,12 @@
 package pas_suivant
 
-import premiers_pas.HandsOnSuiteP1
+import support.HandsOnSuite
 
 /**
 * On passe aux patterns et au pattern matching
 */
 
-class e9_extracteurs_et_patterns extends HandsOnSuiteP1 {
+class e9_extracteurs_et_patterns extends HandsOnSuite {
  /**
   * Un extracteur est l’inverse d’un constructeur.
   * On définit un extracteur en positionnant une méthode unapply sur

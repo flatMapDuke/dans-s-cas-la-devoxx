@@ -8,7 +8,7 @@ import support.HandsOnSuite
 *  Les for sont applicable sur toutes collections.
 */
 
-class e3_boucle_for extends HandsOnSuiteP1 {
+class e3_boucle_for extends HandsOnSuite {
 
   //for classique
 

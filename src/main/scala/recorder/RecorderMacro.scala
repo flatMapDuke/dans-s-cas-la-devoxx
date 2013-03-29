@@ -51,13 +51,6 @@ class RecorderMacro[C <: Context](val context: C) {
 object RecorderMacro {
 
 
-  final val LF = '\u000A'
-  final val FF = '\u000C'
-  final val CR = '\u000D'
-  final val SU = '\u001A'
-
-
-  lazy val lineSep:String = "-----"
 
   def apply(context: Context)(testName: context.Expr[String])
            (testFun: context.Expr[Unit])

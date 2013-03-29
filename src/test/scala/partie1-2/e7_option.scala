@@ -1,6 +1,6 @@
 package pas_suivant
 
-import premiers_pas.HandsOnSuiteP1
+import support.HandsOnSuite
 
 /**
 *   Une Option comme sont nom l’indique représente une valeur optionnelle.
@@ -22,7 +22,7 @@ import premiers_pas.HandsOnSuiteP1
 *     - http://www.scala-lang.org/api/current/index.html#scala.Option
 */
 
-class e7_option extends HandsOnSuiteP1 {
+class e7_option extends HandsOnSuite {
   /**
   * Quelques tests rapides
   */

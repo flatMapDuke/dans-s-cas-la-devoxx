@@ -1,6 +1,8 @@
 package pas_suivant
 
-import premiers_pas.HandsOnSuiteP1
+
+import support.HandsOnSuite
+
 
   /**
   *   On passe aux Listes...
@@ -25,7 +27,7 @@ import premiers_pas.HandsOnSuiteP1
   *   ça peut servir : http://www.scala-lang.org/api/current/index.html#scala.collection.immutable.List
   */
 
-class e4_listes extends HandsOnSuiteP1{
+class e4_listes extends HandsOnSuite {
 
   /**
   *   Nil est et restera la liste vide quelque soit le typage de la liste !

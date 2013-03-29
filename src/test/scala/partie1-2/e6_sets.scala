@@ -1,6 +1,6 @@
 package pas_suivant
 
-import premiers_pas.HandsOnSuiteP1
+import support.HandsOnSuite
 
 /**
 *   Un Set est une collection qui ne contient que des éléments distincts, comme en Java.
@@ -10,7 +10,7 @@ import premiers_pas.HandsOnSuiteP1
 *     - http://docs.scala-lang.org/overviews/collections/sets.html
 */
 
-class e6_sets extends HandsOnSuiteP1 {
+class e6_sets extends HandsOnSuite {
 
   /**
   * Création d'un Set

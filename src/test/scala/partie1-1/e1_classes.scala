@@ -39,7 +39,7 @@ import support.HandsOnSuite
   *     class ClassScala(var name: String)
   */
 
-class e1_classes extends HandsOnSuiteP1{
+class e1_classes extends HandsOnSuite {
 
   // Remarquez que l'on peut se passer des '{}' !
   class ClassWithValParameter(val name: String)

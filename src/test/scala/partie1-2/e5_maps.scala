@@ -1,6 +1,7 @@
 package pas_suivant
 
-import premiers_pas.HandsOnSuiteP1
+import support.HandsOnSuite
+
 
 /**
 *   Comme dans les autres langages, une map de type Map[Key, Value] est une structure
@@ -10,7 +11,7 @@ import premiers_pas.HandsOnSuiteP1
 *   Puis aux MAP : http://www.scala-lang.org/api/current/index.html#scala.collection.concurrent.Map
 */
 
-class e5_maps extends HandsOnSuiteP1 {
+class e5_maps extends HandsOnSuite {
 
   /**
   * Création toute bête d’une map et première opérations

@@ -11,7 +11,7 @@ import support.HandsOnSuite
 *   Puis aux MAP : http://www.scala-lang.org/api/current/index.html#scala.collection.concurrent.Map
 */
 
-class e5_maps extends HandsOnSuite {
+class e5_maps_OPTIONNEL extends HandsOnSuite {
 
   /**
   * Création toute bête d’une map et première opérations

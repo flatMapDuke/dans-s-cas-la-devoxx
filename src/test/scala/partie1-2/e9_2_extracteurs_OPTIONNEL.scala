@@ -6,7 +6,7 @@ import support.HandsOnSuite
 * On passe aux extracteurs
 */
 
-class e9_2_extracteurs extends HandsOnSuite {
+class e9_2_extracteurs_OPTIONNEL extends HandsOnSuite {
 /**
   * Un extracteur est l’inverse d’un constructeur.
   * On définit un extracteur en positionnant une méthode unapply sur

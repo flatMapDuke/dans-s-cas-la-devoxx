@@ -10,7 +10,7 @@ import support.HandsOnSuite
 *     - http://docs.scala-lang.org/overviews/collections/sets.html
 */
 
-class e6_sets extends HandsOnSuite {
+class e6_sets_OPTIONNEL extends HandsOnSuite {
 
   /**
   * Création d'un Set

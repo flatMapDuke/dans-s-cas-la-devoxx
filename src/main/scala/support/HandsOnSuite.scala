@@ -47,9 +47,9 @@ trait HandsOnSuite extends MyFunSuite with ShouldMatchers {
 
       info( "Test     : " + test.replace("\n","") )
 
-      location.collect({ case f =>
-        info( "fichier  : " + f.replace("\n","") )
-      })
+      // location.collect({ case f =>
+      //   info( "fichier  : " + f.replace("\n","") )
+      // })
       message.collect({ case m =>
         info("")
         m.split("\n").foreach( info(_) )

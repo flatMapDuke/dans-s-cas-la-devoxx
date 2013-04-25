@@ -30,11 +30,11 @@ Cette commande lance le premier test et surveille les fichiers, chaque fois que 
 Il y a d'autres commandes qui permettent de lancer chaque chapitre indépendament:
 * ```partie1-1``` - découverte des bases du langage, variables mutables & immutables, classes, case classe et ```for expresssions```
 * ```partie1-2``` - api des listes, maps, sets, option, fonctions de plus haut niveau, extracteurs et pattern matching
-* ```partie2``` - comprendre le fonctionnement de map et de flatMap dans différents contextes, initiation simple à la variance
-* ```partie3``` - construire une implementation de List immutable, construire un stream (liste infinie évaluée à la demande)
-* ```partie4``` - (bonus) Introduction aux TypeClasses
-* ```partie5``` - (bonus) Revisiter map et flatmap dans un cas plus complexe
-* ```partie6``` - (bonus) Un exemple d'event sourcing
+* ```partie2``` - construire une implementation de List immutable, construire un stream (liste infinie évaluée à la demande)
+* ```partie3-INTERMEDIATE``` - comprendre le fonctionnement de map et de flatMap dans différents contextes, initiation simple à la variance
+* ```partie4-INTERMEDIATE``` - (bonus) Introduction aux TypeClasses
+* ```partie5-INTERMEDIATE``` - (bonus) Revisiter map et flatmap dans un cas plus complexe
+* ```partie6-INTERMEDIATE``` - (bonus) Un exemple d'event sourcing
 
 Compléter l'exercice prends plusieurs heures, n'hésitez pas a demander de l'aide sur [la mailing list du PSUG](https://groups.google.com/forum/?fromgroups#!forum/paris-scala-user-group)
 

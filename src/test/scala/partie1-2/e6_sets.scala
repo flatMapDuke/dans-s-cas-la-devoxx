@@ -41,7 +41,7 @@ class e6_sets extends HandsOnSuite {
 
     // suppressions multiples
     val myOtherSet = Set("Sud", "Est", "Ouest", "Nord")
-    val aNewOtherSet = mySet -- List("Ouest", "Nord")
+    val aNewOtherSet = myOtherSet -- List("Ouest", "Nord")
 
     aNewOtherSet.contains("Nord") should be(__)
     aNewOtherSet.contains("Ouest") should be(__)

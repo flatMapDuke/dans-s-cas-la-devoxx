@@ -80,9 +80,9 @@ class e4_listes extends HandsOnSuite {
     // conserve tous les multiple de 3
     a.filter {v => v % 3 == 0} should equal(__)
 
-    // conserve tous les multiple de 3
+    // conserve les nombres qui ne sont pas multiples de 5
     val c = List(1, 2, 5, 8, 9)
-    val b = c.filterNot(v => v == 5)
+    val b = c.filterNot(v => v % 5==0)
     c should equal(List(1, 2, 5, 8, 9)) // les listes sont immuables par défaut !
     b should equal(__)
   }

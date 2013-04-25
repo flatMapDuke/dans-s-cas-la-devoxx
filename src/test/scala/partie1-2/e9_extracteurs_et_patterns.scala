@@ -16,7 +16,6 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
   * et peut être considéré comme une boite à outils statiques d’une classe.
   */
   exercice("Un extracteur est le contraire d’un constructeur") {
-
     class Email(val value:String)
     object Email { def unapply(email:Email):Option[String]=Option(email.value)}
 
@@ -36,13 +35,11 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       def unapply(email:Email):Option[(String,Integer)] = Option((email.value,email.spamRatio))
     }
 
-    val mailstring = "foo@bar.com"
-    val spamRatio = 5
-    val email = new Email(mailstring,4)
+    val email = new Email("foo@bar.com",5)
     val Email(extractedString,extractedRatio) = email
 
-    (extractedRatio == spamRatio) should be(__)
-    (extractedString == mailstring) should be(__)
+    (extractedRatio) should be(__)
+    (extractedString) should be(__)
   }
 
  /**
@@ -56,7 +53,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
     val email = new Email(mailstring)
     val Email(extractedString) = email
 
-    (extractedString == mailstring) should be(__)
+    (extractedString) should be(__)
   }
  /*  
  *   C’est une généralisation du switch, rencontré dans les langages de programmation Java ou C, 
@@ -87,16 +84,16 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (actual == "stringB") should be (__)
+    (actual) should be (__)
 
-    val default = "E" match {
+    val nextActual = "E" match {
       case "A" => "stringA"
       case "B" => "stringB"
       case "C" => "stringC"
       case _ => "DEFAULT"
     }
 
-    (default == "DEFAULT") should be (__)
+    (nextActual) should be (__)
   }
 
   /**
@@ -108,16 +105,16 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
     class B(val b:String = "B") extends Root
     class C(val c:String = "C") extends Root
 
-    val b:Root=new B()
+    val value:Root=new B()
 
-    val actual = b match {
+    val actual = value match {
       case matchedA:A => "string"+matchedA.a
       case matchedB:B => "string"+matchedB.b
       case matchedC:C => "string"+matchedC.c
       case _ => "DEFAULT"
     }
 
-    (actual=="stringB") should be (__)
+    (actual) should be (__)
   }
 
   /**
@@ -125,7 +122,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
   */
   exercice("le pattern matching peut être utilisé avec des extracteurs") {
     case class A(val a:String="A")
-    val a:A = new A(a="b")
+    val a:A = new A(a="c")
 
     val actual = a match {
       case A("a") => "stringA"
@@ -134,7 +131,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (actual == "stringB") should be (__)
+    (actual) should be (__)
   }
 
   exercice("le pattern matching peut être utilisé avec des extracteurs pour capturer des valeurs") {
@@ -147,7 +144,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (actual=="stringB") should be (__)
+    (actual) should be (__)
   }
 
   exercice("Il n’est pas obligatoire de capturer toutes les valeurs") {
@@ -159,7 +156,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (actual=="string") should be (__)
+    (actual) should be (__)
   }
 
   exercice("You can nest patterns") {
@@ -174,7 +171,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (actual == "B") should be (__)
+    (actual) should be (__)
   }
 
   exercice("Les listes ont différents patterns") {
@@ -184,21 +181,22 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (actual == "ok") should be (__)
+    (actual) should be (__)
 
-    val nextActual = s match {
+    val consActual = s match {
+      case "a"::Nil => "ko"
       case "a"::"b"::Nil => "ok"
       case _ => "DEFAULT"
     }
 
-    (nextActual == "ok") should be (__)
+    (consActual) should be (__)
 
-    val lastActual = s match {
-      case head::tail => head
+    val headtailActual = s match {
+      case head::tail => tail
       case _ => "DEFAULT"
     }
 
-    (lastActual == "a") should be (__)
+    (headtailActual) should be (__):
   }
 
   exercice("patterns are evaluated in declaration order") {

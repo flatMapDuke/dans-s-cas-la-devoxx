@@ -196,7 +196,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
       case _ => "DEFAULT"
     }
 
-    (headtailActual) should be (__):
+    (headtailActual) should be (__)
   }
 
   exercice("patterns are evaluated in declaration order") {

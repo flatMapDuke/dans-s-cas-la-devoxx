@@ -23,7 +23,7 @@ class e0_vars_vals extends HandsOnSuite {
     var a = 5
     anchor(a)
     a should be(__)
-
+    
     anchor(a)
 
     a = 7

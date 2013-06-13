@@ -89,17 +89,19 @@ class e0_une_histoire_de_sacs /* ou un sac de sac */ extends HandsOnSuite {
 
     val monPetitSacDeZero = Sac(0)
 
-    // ici on a rajouté .asInstanceOf[Int]
-    // pour des soucis de compilation, il faudra donc remplacer «__.asInstanceOf[Int]»
-    val monPetitSacDeUn  = (for (i <- monPetitSacDeZero) yield (i + __.asInstanceOf[Int]))
+  
+
+    val plus:Int = 12345
+
+    val monPetitSacDeUn  = (for (i <- monPetitSacDeZero) yield (i + plus))
 
     /*
      * Le compilateur scala traduit cette boucle for par :
      *
-     * monPetitSacDeZero.map(i => i + __.asInstanceOf[Int])
+     * monPetitSacDeZero.map(i => {plus + i})
      */
 
-    monPetitSacDeUn.contenu should be(1)
+    monPetitSacDeUn.contenu should be(__)
 
   }
 

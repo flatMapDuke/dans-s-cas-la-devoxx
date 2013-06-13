@@ -40,30 +40,6 @@ class e8_fonctions_de_plus_haut_niveau extends HandsOnSuite {
   }
 
   /**
-  * ça marche encore avec une 'vraie' fonction comme variable,
-  * c’est justement une des particularité des fonctions de plus haut niveau
-  */
-  exercice("Variable qui fait référence à une fonction") {
-    val lambda = new Function1[Int, Int] {
-      def apply(v1: Int) = v1 + 1
-    }
-    def result = List(1, 2, 3) map lambda
-    result should be(__)
-  }
-
-  /**
-  * Avec une autre façon de définir la fonction lambda, passée en paramètre de map
-  */
-  exercice("Encore une autre façon") {
-    val lambda = new (Int => Int) {
-      def apply(v1: Int) = v1 + 1
-    }
-
-    def result = List(1, 2, 3) map lambda
-    result should be(__)
-  }
-
-  /**
   * ou plus simplement
   */
   exercice("simplement") {
@@ -121,11 +97,14 @@ class e8_fonctions_de_plus_haut_niveau extends HandsOnSuite {
   /**
   * La currification
   */
-  exercice("La currification est une technique qui permet de transformer une fonction avec des paramètres multiples en une fonction à un seul paramètre") {
+  exercice("""La currification est une technique qui permet de transformer une 
+    fonction avec des paramètres multiples en une fonction à un seul paramètre""") {
     def multiply(x: Int, y: Int) = x * y
+    // attention au caractère '_' 
+    // qui indique au compilateur qu’il ne faut pas appliquer la fonction mais y faire référence
     val multiplyCurried = (multiply _).curried
     multiply(4, 5) should be(__)
-    multiplyCurried(3)(2) should be(__)
+    multiplyCurried(4)(5) should be(__)
   }
 
 
@@ -137,7 +116,8 @@ class e8_fonctions_de_plus_haut_niveau extends HandsOnSuite {
     val xs = List(12, 11, 5, 20, 3, 13, 2)
     customFilter(onlyEven)(xs) should be(__)
 
-    val onlyEvenFilter = customFilter(onlyEven) _  //attention au caractère '_' qui indique au compilateur qu’il ne faut pas appliquer la fonction mais y faire référence
+    val onlyEvenFilter = customFilter(onlyEven) _  //attention au caractère '_' 
+    // qui indique au compilateur qu’il ne faut pas appliquer la fonction mais y faire référence
     onlyEvenFilter(xs) should be(__)
   }
 }

@@ -63,19 +63,6 @@ class e1_classes extends HandsOnSuite {
     aClass.description should be(__)
   }
 
-  /**
-  * On peut définir un paramètre privé
-  * Si l'on ne précise pas si c'est un val ou un var, par défaut on obtient un val.
-  * On a donc un champs immuable privé
-  */
-  class ClassWithPrivateFields(name: String)
-  // équivalent de : class ClassWithPrivateFields(private val name: String)
-
-  exercice("champs privé d'une classe") {
-    val aClass = new ClassWithPrivateFields("name")
-    assert(false)
-    // NOTE: aClass.name n'est pas accessible
-  }
 
   /**
   * Enfin on peut définir un paramètre privé mutable

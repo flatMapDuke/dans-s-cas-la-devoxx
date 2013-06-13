@@ -21,7 +21,12 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
 
     val mailstring = "foo@bar.com"
     val email = new Email(mailstring)
+
+
+
     val Email(extractedString) = email
+    // Ce que le compilateur fait :  
+    // val extractedString = Email.unapply(email).get
 
     (extractedString == mailstring) should be(__)
   }
@@ -96,48 +101,15 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
     (nextActual) should be (__)
   }
 
-  /**
-  * le pattern matching peut être utilisé sur des types
-  */
-  exercice("le pattern matching peut être utilisé sur des types") {
-    sealed trait Root
-    class A(val a:String = "A") extends Root
-    class B(val b:String = "B") extends Root
-    class C(val c:String = "C") extends Root
+ 
 
-    val value:Root=new B()
+  exercice("le pattern matching peut être utilisé avec des case classes pour capturer des valeurs") {
+    case class A(/* le compilateur ajoute 'val' ici  */ a:String
+               , /* le compilateur ajoute 'val' ici  */ b:String)
 
-    val actual = value match {
-      case matchedA:A => "string"+matchedA.a
-      case matchedB:B => "string"+matchedB.b
-      case matchedC:C => "string"+matchedC.c
-      case _ => "DEFAULT"
-    }
-
-    (actual) should be (__)
-  }
-
-  /**
-  * le pattern matching peut être utilisé avec des extracteurs
-  */
-  exercice("le pattern matching peut être utilisé avec des extracteurs") {
-    case class A(val a:String="A")
-    val a:A = new A(a="c")
-
-    val actual = a match {
-      case A("a") => "stringA"
-      case A("b") => "stringB"
-      case A("c") => "stringC"
-      case _ => "DEFAULT"
-    }
-
-    (actual) should be (__)
-  }
-
-  exercice("le pattern matching peut être utilisé avec des extracteurs pour capturer des valeurs") {
-    case class A(val a:String, val b:String)
-
-    val a:A = new A(a="string", b="B")
+    val a:A = /* On peut faire A(.., ...) à la place de new A(..., ...) 
+       car l'object companion de A calculé par le compilateur définit A$.apply(..., ...) */
+              A(a="string", b="B")
 
     val actual = a match {
       case A(a,b) => a+b
@@ -159,20 +131,7 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
     (actual) should be (__)
   }
 
-  exercice("You can nest patterns") {
-    case class A(val a:String, val b:String)
-    case class B(val a:A)
-
-    val a:A = new A(a="string", b="B")
-    val b:B = new B(a)
-
-    val actual = b match {
-      case B(A(_,b)) => b
-      case _ => "DEFAULT"
-    }
-
-    (actual) should be (__)
-  }
+  
 
   exercice("Les listes ont différents patterns") {
     val s = Seq("a","b")
@@ -198,15 +157,5 @@ class e9_extracteurs_et_patterns extends HandsOnSuite {
 
     (headtailActual) should be (__)
   }
-
-  exercice("patterns are evaluated in declaration order") {
-    val s = Seq("a","b")
-    val actual = s match {
-      case Seq("a","b") => "ok"
-      case head::tail => "ko"
-      case _ => "DEFAULT"
-    }
-
-    (actual == "ok") should be (__)
-  }
+  
 }

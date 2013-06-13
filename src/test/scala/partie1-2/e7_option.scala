@@ -36,19 +36,10 @@ class e7_option extends HandsOnSuite {
     a should be(__)
   }
 
-  exercice("On peut convertir None en une String") {
-    None.toString should be(__)
-  }
-
   exercice("None est considéré comme vide") {
     None.isEmpty should be(__)
   }
 
-  exercice("On ne peut pas cast None en n’importe quel objet") {
-    intercept[ClassCastException] {
-      assert(None.asInstanceOf[String].getClass == classOf[String])
-    }
-  }
 
   exercice("None peut être utilisé avec le type Option, plutôt qu’avec null") {
     val optional: Option[String] = None
@@ -56,7 +47,7 @@ class e7_option extends HandsOnSuite {
     optional should be(__)
   }
 
-  exercice("Some est l’opposé de None pour le type Option") {
+  exercice("Some est le complémentaire de None pour le type Option") {
     val optional: Option[String] = Some("Some Value")
     (optional == None) should be(__)
     optional.isEmpty should be(__)

@@ -72,15 +72,6 @@ class e2_case_classes extends HandsOnSuite {
     (p1.hashCode == p3.hashCode) should be(__)
   }
 
-  /**
-  * La méthode toString
-  */
-  exercice("Les cases classes définissent de base la méthode to String") {
-    case class MonChien(nom: String, race: String)
-    val d1 = MonChien("Scooby", "Doberman")
-
-    d1.toString should be(__)
-  }
 
   /**
   * Les accesseurs

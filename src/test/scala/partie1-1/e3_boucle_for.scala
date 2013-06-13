@@ -55,6 +55,8 @@ class e3_boucle_for extends HandsOnSuite {
   * Le mot clé 'yield' est utilisé pour retourner un élément et passer à l’itération suivante.
   */
   exercice("Les boucles for peuvent produire une liste, peuvent être sommée facilement") {
+    
+    
     val quelqueNombres = 0 until 10
 
     val uneListe =

@@ -74,7 +74,7 @@ object Implicits {
 * Enfin le sérialiseur qui prend un objet de type A et implicitement
 * un writer de type Writer[A]. Il n'a donc pas besoin d'importer ici
 * les writers en question, il suffira de les avoir dans le scope implicit
-* du cope appelant.
+* du code appelant.
 */
 object Json{
   def toJson[A](value:A)(implicit writer:Writer[A]):JsValue={

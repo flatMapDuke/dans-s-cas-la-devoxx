@@ -11,7 +11,7 @@ Pré-requis
 ------------
 Vous avez besoin :
 * D'une connexion internet 
-* De java 6 ou de java 7 (vous pouvez le vérifier en lançant java -version)
+* De java 6, 7 ou 8 (vous pouvez le vérifier en lançant java -version)
 * Un éditeur de texte (nous recommandons sublime-text)
 
 Lancer le Hands-on

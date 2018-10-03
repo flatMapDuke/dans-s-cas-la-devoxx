@@ -6,10 +6,10 @@ class e3_un_sac_covariant extends HandsOnSuite {
 
   /**
    *
-   * La covariance est un mécanisme pour dire qu'un type paramêtrée varie de la même façon que son paramêtre.
+   * La covariance est un mécanisme pour dire qu'un type paramètré varie de la même façon que son paramètre.
    *
    * Si A <: B  (cela veut dire que A est une sous classe de B)
-   * Et que Sac[A] est covariance sur A (Sac[+A])
+   * Et que Sac[A] est covariant sur A (Sac[+A])
    * Alors Sac[A] <: Sac[B]
    *
    * Ce mécanisme est nécessaire ici pour définir le Sac Vide.

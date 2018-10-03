@@ -22,7 +22,7 @@ import support.HandsOnSuite
   *
   *     class ClassJava {
   *
-  *       final String name;
+  *       String name;
   *
   *       public String getName() {
   *         return this.name;
